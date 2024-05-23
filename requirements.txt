@@ -1,2 +1,13 @@
-Flask
-Gunicorn
+beautifulsoup4==4.6.0
+Flask==2.3.2
+Flask_Cors==3.0.10
+lxml==4.9.3
+nltk==3.8.1
+numpy==1.24.3
+pandas==2.0.3
+selenium==3.14.0
+termcolor==1.1.0
+transformers==4.31.0
+vaderSentiment==3.3.2
+webdriver_manager==3.5.2
+torch==2.0.1
