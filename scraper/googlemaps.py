@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
@@ -373,6 +374,14 @@ class GoogleMapsScraper:
 
         if not self.debug:
             options.add_argument("--headless")
+            options.add_argument("--disable-gpu")
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
+            options.add_argument("--remote-debugging-port=9222")
+            options.add_argument("--disable-software-rasterizer")
+            options.add_argument("--disable-extensions")
+            options.add_argument("--disable-plugins")
+            options.add_argument("--disable-popup-blocking")
         else:
             options.add_argument("--window-size=1366,768")
 
@@ -381,7 +390,9 @@ class GoogleMapsScraper:
         #options.binary_location = "flask-backend/scraper/"
         #ChromeDriverManager().install()
         #executable_path="C:/Users/Dakshin Devanand/Desktop/food-recommendation/flask-backend/scraper/chromedriver_win32/chromedriver.exe"
-        input_driver = webdriver.Chrome(ChromeDriverManager(driver_version="125.0.6422.76").install(), options=options) #needs to match chrome version locally
+
+        service = Service(ChromeDriverManager().install())
+        input_driver = webdriver.Chrome(service=service, options=options) #needs to match chrome version locally
 
         # click on google agree button so we can continue (not needed anymore)
         # EC.element_to_be_clickable((By.XPATH, '//span[contains(text(), "I agree")]'))
