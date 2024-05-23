@@ -391,8 +391,7 @@ class GoogleMapsScraper:
         #ChromeDriverManager().install()
         #executable_path="C:/Users/Dakshin Devanand/Desktop/food-recommendation/flask-backend/scraper/chromedriver_win32/chromedriver.exe"
 
-        service = Service(ChromeDriverManager().install())
-        input_driver = webdriver.Chrome(service=service, options=options) #needs to match chrome version locally
+        input_driver = webdriver.Chrome(ChromeDriverManager().install(), options=options) #needs to match chrome version locally
 
         # click on google agree button so we can continue (not needed anymore)
         # EC.element_to_be_clickable((By.XPATH, '//span[contains(text(), "I agree")]'))
